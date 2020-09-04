@@ -26,7 +26,27 @@ an asterisk, which is not considered part of the contents of the comment.
 By convention, the first paragraph of the documentation text (the block of text until the first blank line) is the
 summary description of the element, and the following text is the detailed description.
 
-Every block tag begins on a new line and starts with the `@` character.
+While supported in Kotlin, the convention is to avoid using @param and @return tags. Instead, incorporate the description of parameters and return values directly into the documentation comment, and add links to parameters wherever they are mentioned. Use @param and @return only when a lengthy description is required which doesn't fit into the flow of the main text.
+
+```kotlin
+// Avoid doing this:
+
+/**
+ * Returns the absolute value of the given number.
+ * @param number The number to return the absolute value for.
+ * @return The absolute value.
+ */
+fun abs(number: Int) { /*...*/ }
+
+// Do this instead:
+
+/**
+ * Returns the absolute value of the given [number].
+ */
+fun abs(number: Int) { /*...*/ }
+```
+
+If you do need to use them, every block tag begins on a new line and starts with the `@` character.
 
 Here's an example of a class documented using KDoc:
 
